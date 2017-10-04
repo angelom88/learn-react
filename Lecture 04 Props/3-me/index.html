@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Props or Properties/Attributes in react</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.0.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.0.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+  <div id="container"></div>
+
+  <script type="text/babel">
+
+   class SampleClassComponent extends React.Component {
+     render() {
+       return (<div>Test content here</div>)
+     }
+   }
+
+
+
+
+    ReactDOM.render(
+        <SampleClassComponent/>,
+        document.getElementById('container')
+    )
+  </script>
+</body>
+</html>
