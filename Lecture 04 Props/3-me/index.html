@@ -15,15 +15,23 @@
 
    class SampleClassComponent extends React.Component {
      render() {
-       return (<div>Test content here</div>)
+       return (<div>SampleClassComponent using props Test content here value: {this.props.value}</div>)
      }
+   }
+
+   function SampleFunctionComponent(props) {
+      return (
+          <div>SampleFunctionComponent using props Test content here value: {props.value}</div>
+      )
    }
 
 
 
-
     ReactDOM.render(
-        <SampleClassComponent/>,
+        <div>
+          <SampleClassComponent value='hello'/>
+          <SampleFunctionComponent value='world'/>
+        </div>,
         document.getElementById('container')
     )
   </script>
