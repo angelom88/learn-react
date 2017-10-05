@@ -9,31 +9,48 @@
 
 </head>
 <body>
-  <div id="container"></div>
+<div id="container"></div>
 
-  <script type="text/babel">
-
-   class SampleClassComponent extends React.Component {
-     render() {
-       return (<div>SampleClassComponent using props Test content here value: {this.props.value}</div>)
-     }
-   }
-
-   function SampleFunctionComponent(props) {
+<script type="text/babel">
+  class SampleClassComponent extends React.Component {
+    render() {
       return (
-          <div>SampleFunctionComponent using props Test content here value: {props.value}</div>
-      )
-   }
+          <div>SampleClassComponent using props Test content here value: {this.props.value}</div>)
+    }
 
+    constructor(props) {
+      super(props)
+      // some codes here
+    }
+  }
 
+  SampleClassComponent.defaultProps = {
+    value: 'default value from class component'
+  }
 
-    ReactDOM.render(
-        <div>
-          <SampleClassComponent value='hello'/>
-          <SampleFunctionComponent value='world'/>
-        </div>,
-        document.getElementById('container')
+  function SampleFunctionalComponent(props) {
+    return (
+        <div>SampleFunctionalComponent using props Test content here value: {props.value}</div>
     )
-  </script>
+  }
+
+  SampleFunctionalComponent.getDefaultProps = function () {
+    return {
+      value: 'default value from functional component'
+    }
+  }
+
+  ReactDOM.render(
+      <div>
+        <SampleClassComponent value='hello'/>
+        <SampleFunctionalComponent value='world'/>
+        <SampleClassComponent/>
+        <SampleFunctionalComponent/>
+      </div>,
+      document.getElementById('container')
+  )
+
+  // use es6 react component via class rather than functional way
+</script>
 </body>
 </html>
