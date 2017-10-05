@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Props or Properties/Attributes in react</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.0.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.0.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+    class CounterComponent extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          count: 0
+        }
+      }
+
+      incrementCounter(increment) {
+        this.setState({
+          count: this.state.count + increment
+        })
+      }
+
+      render() {
+        return (
+            <div className="container">
+              <h3>count: {this.state.count}</h3>
+              <button className="btn blue-btn" onClick={() => this.incrementCounter(1)}>+1</button>
+              <button className="btn green-btn" onClick={() => this.incrementCounter(5)}>+5</button>
+              <button className="btn purple-btn" onClick={() => this.incrementCounter(10)}>+10</button>
+            </div>
+         )
+      }
+    }
+
+    ReactDOM.render(
+        <CounterComponent/>,
+        document.getElementById('app')
+    )
+  </script>
+</body>
+</html>
