@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Props or Properties/Attributes in react</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.0.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.0.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<body>
+<div id="container"></div>
+
+  <script type="text/babel">
+    class SampleStateComponent extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          name: ''
+        }
+        this.nameChanged = this.nameChanged.bind(this)
+        this.resetName = this.resetName.bind(this)
+      }
+
+      resetName() {
+        this.setState({
+          name: ''
+        })
+      }
+
+      nameChanged(event) {
+        this.setState({
+          name: event.target.value
+        })
+      }
+
+      render() {
+        return(
+            <div>
+              <input type='text' onChange={this.nameChanged} value={this.state.name} />
+              <h3>name: {this.state.name}</h3>
+              <button onClick={this.resetName}>Reset</button>
+            </div>
+        )
+      }
+    }
+
+    ReactDOM.render(
+        <SampleStateComponent/>,
+        document.getElementById('container')
+    )
+
+
+  </script>
+</body>
+</html>
