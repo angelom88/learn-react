@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Props or Properties/Attributes in react</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/16.0.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/16.0.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+  <div id="app"></div>
+
+  <script type="text/babel">
+    class CounterComponent extends React.Component {
+      constructor(props) {
+        super(props)
+        this.state = {
+          count: 0
+        }
+      }
+
+      incrementCounter(increment) {
+        console.log(increment)
+        this.setState({
+          count: this.state.count + increment
+        })
+      }
+
+      render() {
+        return (
+            <div className="container">
+              <h3>count: {this.state.count}</h3>
+              <button className="btn blue-btn" onClick={() => this.incrementCounter(this.props.value1)}>{ `${this.props.text} ${this.props.value1}` }</button>
+                <button className="btn green-btn" onClick={() => this.incrementCounter(this.props.value2)} >{ `${this.props.text} ${this.props.value2}` }</button>
+                <button className="btn purple-btn" onClick={() => this.incrementCounter(this.props.value3)} >{ `${this.props.text} ${this.props.value3}` }</button>
+            </div>
+         )
+      }
+    }
+
+    CounterComponent.defaultProps = {
+      text: 'Add',
+      value1: 1,
+      value2: 5,
+      value3: 10
+    }
+
+    ReactDOM.render(
+        <div>
+          <CounterComponent />
+          <CounterComponent value1={100} value2={1000} value3={5000} />
+        </div>
+        ,
+        document.getElementById('app')
+    )
+  </script>
+</body>
+</html>
